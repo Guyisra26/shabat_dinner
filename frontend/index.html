@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}טופס הגעה{% endblock %}
+{% block header %}נא לציין הגעה לארוחת שישי{% endblock %}
+
+{% block content %}
+<form action="/submit" method="post" class="card p-4 shadow-sm mx-auto" style="max-width: 400px;">
+  <div class="mb-3">
+    <label class="form-label">שם משפחה:</label>
+   <select class="form-select" name="family" required>
+  <option value="" disabled selected>בחר בית אב</option>
+  <option value="אריה">אריה</option>
+  <option value="פיני">פיני</option>
+  <option value="דודי">דודי</option>
+  <option value="שרי">שרי</option>
+  <option value="איציק">איציק</option>
+  <option value="משה">משה</option>
+  <option value="ניר">ניר</option>
+  <option value="איציק של עדינה">איציק של עדינה</option>
+  <option value="הילה">הילה</option>
+  <option value="ליהי">ליהי</option>
+</select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">מספר משתתפים:</label>
+    <select class="form-select" name="num_people" required>
+      <option value="" selected disabled>בחר מספר</option>
+      {% for i in range(11) %}
+        <option value="{{ i }}">{{ i }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success w-100">שלח</button>
+</form>
+{% endblock %}
